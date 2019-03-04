@@ -19,7 +19,6 @@
 
 def reduct(polymer: str) -> str:
     units = list(polymer)
-    idxs = [i for i in range(len(units))]
     deleted = set()
 
     def next_idx(prev_idx: int) -> int:
@@ -70,6 +69,6 @@ for c in chars:
     polymer_no_c = polymer.replace(c,"").replace(c.upper(),"")
     best[c] = len(reduct(polymer_no_c))
 
-print(best)
+# print(best)
 best_key = min(best, key=lambda c: best[c])
 print(best_key)

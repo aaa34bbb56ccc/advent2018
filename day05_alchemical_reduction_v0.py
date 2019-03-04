@@ -42,11 +42,8 @@ def reduct(polymer: str) -> str:
 with open('data/day_05.txt') as f:
     polymer = f.read().strip()
 
-p1 = reduct(polymer)
-# p2 = reduct(p1)
-# p3 = reduct(p2)
-# print(p3)
-print(len(p1))
+# p1 = reduct(polymer)
+# print(len(p1))
 
 # assert reduct("aA") == ""
 # assert reduct("abBA") == ""
@@ -57,6 +54,15 @@ print(len(p1))
 # assert reduct("dabAcCaCBAZzDXxXxdcCcaDA") == "dabCBAcaDA"
 # assert reduct("AZzDXxXxdcCcaDA") == "AcaDA"
 
-# AZzDXxXxdcCcaDA = AxdcaDA
-# 012345678911111
-#           01234
+chars = {c.lower() for c in polymer}
+
+best = {}
+
+for c in chars:
+    print(c)
+    polymer_no_c = polymer.replace(c,"").replace(c.upper(),"")
+    best[c] = len(reduct(polymer_no_c))
+
+# print(best)
+best_key = min(best, key=lambda c: best[c])
+print(best_key)
